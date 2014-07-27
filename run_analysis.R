@@ -19,7 +19,17 @@ mean_std <- grep("mean\\(\\)|std\\(\\)", features[, 2])
 x_mean_std <- x_data[,mean_std]
 
 #3. Uses descriptive activity names to name the activities in the data set
-
+activity <- read.table("./data/activity_labels.txt")
+y_data[,1] <- activity[y_data[,1],2]
 
 #4. Appropriately labels the data set with descriptive variable names. 
+# change labels
+names(x_mean_std) <- gsub("\\(\\)", "", features[mean_std, 2])
+names(y_data) <- "activity"
+names(subject_data) <- "subject"
 
+# merge
+imerge_data <- cbind(subject_data,y_data,x_mean_std)
+
+
+#5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
