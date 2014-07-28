@@ -29,7 +29,7 @@ names(y_data) <- "activity"
 names(subject_data) <- "subject"
 
 # merge
-imerge_data <- cbind(subject_data,y_data,x_mean_std)
+merge_data <- cbind(subject_data,y_data,x_mean_std)
 
 #write file
 write.table(merge_data, "merge_data.txt")
