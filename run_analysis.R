@@ -37,3 +37,5 @@ write.table(merge_data, "merge_data.txt")
 #5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 tidy_data <- aggregate(merge_data[,3:ncol(merge_data)],list(Subject=merge_data$subject,Activity=merge_data$activity),mean)
 tidy_data <- tidy_data[order(tidy_data$Subject),]
+
+write.table(tidy_data, file="./tidy_data.txt", sep="\t", row.names=FALSE)
